@@ -1,5 +1,5 @@
 {
-  "name": "Fluyo",
+  "name": "fluyo",
   "private": true,
   "scripts": {
     "build": "turbo build",
@@ -18,6 +18,6 @@
   "packageManager": "npm@9.7.2",
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "config/*"
   ]
 }
