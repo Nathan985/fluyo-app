@@ -14,14 +14,19 @@
     "@fluyo/eslint-config": "*",
     "@fluyo/prettier-config": "*",
     "@fluyo/typescript-config": "*",
+    "@fluyo/env": "*",
     "@types/node": "^20.14.9",
     "dotenv-cli": "^7.4.4",
     "tsx": "^4.16.2"
   },
   "eslintConfig": {
+    "root": true,
     "extends": [
       "@fluyo/eslint-config/node"
-    ]
+    ],
+    "parserOptions": {
+      "project": "./apps/api/tsconfig.json"
+    }
   },
   "prettier": "@fluyo/prettier-config"
 }
