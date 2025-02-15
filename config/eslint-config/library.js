@@ -3,9 +3,11 @@ module.exports = {
   extends: [
     "plugin:prettier/recommended"
   ],
+  parser: '@typescript-eslint/parser',
   plugins: [
     'simple-import-sort',
     "import",
+    '@typescript-eslint',
     "unused-imports",
     "unicorn",
     "prettier"
