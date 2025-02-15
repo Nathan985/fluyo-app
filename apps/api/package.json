@@ -1,0 +1,27 @@
+{
+  "name": "@fluyo/api",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npm run env:load tsx watch src/http/server.ts",
+    "env:load": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "fastify": "^5.0.0",
+    "fastify-type-provider-zod": "^4.0.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@fluyo/eslint-config": "*",
+    "@fluyo/prettier-config": "*",
+    "@fluyo/typescript-config": "*",
+    "@types/node": "^20.14.9",
+    "dotenv-cli": "^7.4.4",
+    "tsx": "^4.16.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@fluyo/eslint-config/node"
+    ]
+  },
+  "prettier": "@fluyo/prettier-config"
+}

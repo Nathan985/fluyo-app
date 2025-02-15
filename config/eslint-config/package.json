@@ -4,12 +4,13 @@
   "private": "true",
   "files": [
     "library.js",
-    "index.js",
+    "node.js",
     "react.js"
   ],
   "devDependencies": {
     "@fluyo/prettier-config": "*",
     "@rocketseat/eslint-config": "^2.2.2",
+    "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",

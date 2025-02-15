@@ -1,15 +1,33 @@
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
   extends: [
-    "plugin:prettier/recommended",
+    "plugin:prettier/recommended"
   ],
   plugins: [
     'simple-import-sort',
     "import",
     "unused-imports",
+    "unicorn",
     "prettier"
   ],
   rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        printWidth: 80,
+        tabWidth: 2,
+        useTabs: true,
+        semi: true,
+        singleQuote: true,
+        quoteProps: 'as-needed',
+        jsxSingleQuote: true,
+        trailingComma: 'es5',
+        bracketSpacing: true,
+        arrowParens: 'always',
+        endOfLine: 'lf',
+        bracketSameLine: false,
+      },
+    ],
     'no-restricted-syntax': [
       'error',
       {
