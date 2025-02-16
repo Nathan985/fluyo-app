@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  uuid         String    @id @default(auto()) @map("_id") @db.ObjectId
+  name         String?
+  email        String    @unique
+  passwordHash String?   @map("password_hash")
+  avatarUrl    String?   @map("avatar_url")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt() @map("updated_at")
+  Token        Token[]
+  Account      Account[]
+}
+
+enum TokenType {
+  PASSWORD_RECOVER
+}
+
+model Token {
+  uuid      String    @id @default(auto()) @map("_id") @db.ObjectId
+  type      TokenType
+  createdAt DateTime  @default(now()) @map("created_at")
+  user      User      @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+  userId    String    @map("user_id") @db.ObjectId
+
+  @@map("tokens")
+}
+
+enum AccountProvider {
+  GITHUB
+}
+
+model Account {
+  uuid              String          @id @default(auto()) @map("_id") @db.ObjectId
+  provider          AccountProvider
+  providerAccountId String          @unique @map("provider_account_id")
+  user              User            @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+  userId            String          @map("user_id") @db.ObjectId
+
+  @@unique([provider, userId])
+  @@map("accounts")
+}

@@ -3,20 +3,30 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "npm run env:load tsx watch src/http/server.ts",
+    "db:studio": "npm run env:load prisma studio",
+    "db:migrate": "npm run env:load prisma migrate dev",
     "env:load": "dotenv -e ../../.env --"
   },
   "dependencies": {
+    "@fastify/cors": "^10.0.2",
+    "@fastify/jwt": "^9.0.4",
+    "@fastify/swagger": "^9.4.2",
+    "@fastify/swagger-ui": "^5.2.2",
+    "@prisma/client": "^6.3.1",
+    "bcryptjs": "^3.0.0",
     "fastify": "^5.0.0",
     "fastify-type-provider-zod": "^4.0.2",
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@fluyo/env": "*",
     "@fluyo/eslint-config": "*",
     "@fluyo/prettier-config": "*",
     "@fluyo/typescript-config": "*",
-    "@fluyo/env": "*",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20.14.9",
     "dotenv-cli": "^7.4.4",
+    "prisma": "^6.3.1",
     "tsx": "^4.16.2"
   },
   "eslintConfig": {

@@ -13,6 +13,7 @@ module.exports = {
     "prettier"
   ],
   rules: {
+    "@typescript-eslint/no-namespace": "off",
     'prettier/prettier': [
       'error',
       {
