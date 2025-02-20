@@ -3,8 +3,8 @@ import { compare } from 'bcryptjs';
 import { BadRequestError } from '@/_errors/bad-request-error';
 import { prisma } from '@/lib/prisma';
 
-import { IAuthenticateWithPasswordUseCase } from '../@dto';
 import { IUseCaseBase } from '../@types/usecase-base';
+import { IAuthenticateWithPasswordUseCase } from './@dto';
 
 export class AuthenticateWithPasswordUseCase
 	implements

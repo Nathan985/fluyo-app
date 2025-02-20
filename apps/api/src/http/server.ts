@@ -1,4 +1,5 @@
 import FastifyCors from '@fastify/cors';
+import FastifyJwt from '@fastify/jwt';
 import FastifySwagger from '@fastify/swagger';
 import FastifySwaggerUi from '@fastify/swagger-ui';
 import { env } from '@fluyo/env';
@@ -48,7 +49,9 @@ app.register(FastifySwaggerUi, {
 
 app.register(FastifyCors);
 
-app.register(jwtConfig);
+app.register(FastifyJwt, {
+	secret: env.JWT_SECRET,
+});
 
 app.register(buildRoutes);
 
