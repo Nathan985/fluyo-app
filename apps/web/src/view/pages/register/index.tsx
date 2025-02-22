@@ -1,9 +1,9 @@
 import React from 'react';
-import { useAuth } from './useAuth';
+import { useRegister } from './useRegister';
 import { Input } from 'src/components/Input';
 
-export const AuthPage: React.FC = () => {
-	const { onHandleSubmit, register, errors } = useAuth();
+const RegisterPage: React.FC = () => {
+	const { errors, onHandleSubmit, register } = useRegister();
 
 	return (
 		<div className='flex h-full w-full items-center justify-center'>
@@ -15,7 +15,7 @@ export const AuthPage: React.FC = () => {
 						className='mx-auto h-10 w-auto'
 					/>
 					<h2 className='mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900'>
-						Logue com sua conta
+						Crie uma conta
 					</h2>
 				</div>
 
@@ -40,24 +40,33 @@ export const AuthPage: React.FC = () => {
 								{...register('password')}
 							/>
 						</div>
+						<div>
+							<Input
+								id='confirm_password'
+								label='Confirme sua senha'
+								type='password'
+								{...register('confirm_password')}
+								error={errors.confirm_password?.message}
+							/>
+						</div>
 
 						<div>
 							<button
 								type='submit'
 								className='flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
 							>
-								Login
+								Cadastrar
 							</button>
 						</div>
 					</form>
 
 					<p className='mt-10 text-center text-sm/6 text-gray-500'>
-						Ainda não tem registro?{' '}
+						Já tem login?{' '}
 						<a
-							href='/register'
+							href='/login'
 							className='font-semibold text-indigo-600 hover:text-indigo-500'
 						>
-							Cadastre-se aqui
+							Logue-se aqui
 						</a>
 					</p>
 				</div>
@@ -65,3 +74,5 @@ export const AuthPage: React.FC = () => {
 		</div>
 	);
 };
+
+export default RegisterPage;
