@@ -16,7 +16,8 @@
     ],
     
     "paths": {
-      "@pages": ["./src/view/pages"]
+      "@pages": ["./src/view/pages"],
+      "@shared": ["./src/@shared"]
     },
     /* Bundler mode */
     "moduleResolution": "bundler",

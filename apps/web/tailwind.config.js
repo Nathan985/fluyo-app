@@ -5,6 +5,63 @@ export default {
 	theme: {
 		fontFamily: {},
 		extend: {
+			colors: {
+				background: "hsl(var(--background))",
+				foreground: "hsl(var(--foreground))",
+				primary: {
+					DEFAULT: "hsl(var(--primary) / <alpha-value>)",
+					foreground: "hsl(var(--primary-foreground) / <alpha-value>)",
+				},
+				secondary: {
+					DEFAULT: "hsl(var(--secondary) / <alpha-value>)",
+					foreground: "hsl(var(--secondary-foreground) / <alpha-value>)",
+				},
+				card: {
+					DEFAULT: "hsl(var(--card))",
+					foreground: "hsl(var(--card-foreground))",
+				},
+				muted: {
+					DEFAULT: "hsl(var(--muted))",
+					foreground: "hsl(var(--muted-foreground))",
+				},
+				accent: {
+					DEFAULT: "hsl(var(--accent))",
+					foreground: "hsl(var(--accent-foreground))",
+				},
+				popover: {
+					DEFAULT: "hsl(var(--popover))",
+					foreground: "hsl(var(--popover-foreground))",
+				},
+				nav: {
+					DEFAULT: "hsl(var(--nav) / <alpha-value>)",
+					foreground: "hsl(var(--nav-foreground) / <alpha-value>)",
+				},
+				border: "hsl(var(--border))",
+				input: "hsl(var(--input))",
+				destructive: {
+					DEFAULT: "hsl(var(--destructive))",
+					foreground: "hsl(var(--destructive-foreground))",
+				},
+				success: {
+					DEFAULT: "hsl(var(--success))",
+					foreground: "hsl(var(--success-foreground))",
+				},
+				warning: {
+					DEFAULT: "hsl(var(--warning))",
+					foreground: "hsl(var(--warning-foreground))",
+				},
+				info: {
+					DEFAULT: "hsl(var(--info))",
+					foreground: "hsl(var(--info-foreground))",
+				},
+				chart: {
+					1: "hsl(var(--chart-1))",
+					2: "hsl(var(--chart-2))",
+					3: "hsl(var(--chart-3))",
+					4: "hsl(var(--chart-4))",
+					5: "hsl(var(--chart-5))",
+				},
+			},
 			keyframes: {
 				"accordion-down": {
 					from: { height: "0" },
