@@ -47,7 +47,10 @@ app.register(FastifySwaggerUi, {
 	routePrefix: '/docs',
 });
 
-app.register(FastifyCors);
+app.register(FastifyCors, {
+	origin: '*',
+	methods: ['GET', 'POST', 'PUT', 'DELETE'],
+});
 
 app.register(FastifyJwt, {
 	secret: env.JWT_SECRET,

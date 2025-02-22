@@ -1,9 +1,10 @@
 import React from 'react';
 import { useAuth } from './useAuth';
 import { Input } from 'src/components/Input';
+import { Button } from 'src/components/Button';
 
 export const AuthPage: React.FC = () => {
-	const { onHandleSubmit, register, errors } = useAuth();
+	const { onHandleSubmit, register, errors, authenticate } = useAuth();
 
 	return (
 		<div className='flex h-full w-full items-center justify-center'>
@@ -41,14 +42,13 @@ export const AuthPage: React.FC = () => {
 							/>
 						</div>
 
-						<div>
-							<button
-								type='submit'
-								className='flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
-							>
-								Login
-							</button>
-						</div>
+						<Button
+							type='submit'
+							className='flex w-full'
+							isLoading={authenticate.isPending}
+						>
+							Login
+						</Button>
 					</form>
 
 					<p className='mt-10 text-center text-sm/6 text-gray-500'>
