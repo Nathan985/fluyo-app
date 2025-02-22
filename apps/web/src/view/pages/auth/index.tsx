@@ -3,7 +3,7 @@ import React from "react";
 export const AuthPage: React.FC = () => {
     return (
         <div>
-            <p>Authentication Route</p>
+            <p className="">Authentication Route</p>
         </div>
     );
 };
