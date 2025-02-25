@@ -32,7 +32,9 @@ export const useRegister = () => {
 		resolver: zodResolver(schema),
 	});
 
-	const onHandleSubmit = handleSubmit((data) => {});
+	const onHandleSubmit = handleSubmit((data) => {
+		console.log({ data });
+	});
 
 	return {
 		errors,

@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import AuthService from 'src/@shared/services/AuthService';
 import { toast } from 'react-hot-toast';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const schema = z.object({
 	email: z.string().min(1, 'Informe o email de login').email('Email invalido'),
