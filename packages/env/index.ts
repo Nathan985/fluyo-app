@@ -3,13 +3,13 @@ import { z } from 'zod';
 
 export const env = createEnv({
 	server: {
-		PORT: z.coerce.number().default(3333),
+		SERVER_PORT: z.coerce.number().default(3333),
 		JWT_SECRET: z.string(),
 	},
 	client: {},
 	shared: {},
 	runtimeEnv: {
-		PORT: process.env.PORT,
+		SERVER_PORT: process.env.SERVER_PORT,
 		JWT_SECRET: process.env.JWT_SECRET,
 	},
 	emptyStringAsUndefined: true,
