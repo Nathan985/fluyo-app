@@ -13,7 +13,6 @@ import {
 
 import { errorHandler } from '@/_errors/error-handler';
 
-import { jwtConfig } from './jwt';
 import { buildRoutes } from './routes';
 
 const app = Fastify().withTypeProvider<ZodTypeProvider>();
@@ -58,6 +57,6 @@ app.register(FastifyJwt, {
 
 app.register(buildRoutes);
 
-app.listen({ port: env.SERVER_PORT }).then(() => {
-	console.log(`Server listening on port ${env.SERVER_PORT}`);
+app.listen({ port: env.PORT }).then(() => {
+	console.log(`Server listening on port ${env.PORT}`);
 });
