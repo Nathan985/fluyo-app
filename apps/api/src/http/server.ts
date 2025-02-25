@@ -57,6 +57,6 @@ app.register(FastifyJwt, {
 
 app.register(buildRoutes);
 const port = Number(process.env.PORT) || 3000;
-app.listen({ port }).then(() => {
+app.listen({ port, host: '0.0.0.0' }).then(() => {
 	console.log(`Server listening on port ${port}`);
 });
