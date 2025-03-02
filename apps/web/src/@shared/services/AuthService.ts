@@ -9,6 +9,7 @@ class AuthService extends BaseService implements IAuthService {
 	constructor() {
 		super('auth');
 		this.authenticate = this.authenticate.bind(this);
+		this.createAnAccount = this.createAnAccount.bind(this);
 	}
 
 	async authenticate(

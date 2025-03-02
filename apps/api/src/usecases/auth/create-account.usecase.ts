@@ -20,7 +20,10 @@ export class CreateAccountUsecase
 		});
 
 		if (userWithSameEmail) {
-			throw new BadRequestError('Email already in use');
+			throw new BadRequestError({
+				message: 'E-mail já está em uso',
+				path: ['email'],
+			});
 		}
 
 		const passwordHash = await hash(password, 6);

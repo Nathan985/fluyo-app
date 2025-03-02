@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer utilities {
+  .app-scrollbar {
+    @apply scrollbar-thin scrollbar-thumb-indigo-800 scrollbar-track-gray-800;
+  }
+
+  .app-scrollbar::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+}
+
 @layer base {
 
   :root {
@@ -53,6 +66,13 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+  }
+
+
+
+
+  .app-scrollbar-nested {
+    @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-800 rounded-xl;
   }
 
   .dark {

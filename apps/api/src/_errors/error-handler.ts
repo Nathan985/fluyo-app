@@ -15,8 +15,10 @@ export const errorHandler: FastifyErrorHandler = (error, request, reply) => {
 	}
 
 	if (error instanceof BadRequestError) {
+		const customError: BadRequestError = error;
 		return reply.status(400).send({
-			message: error.message,
+			message: customError.message,
+			path: customError.path,
 		});
 	}
 

@@ -23,6 +23,15 @@ const RegisterPage: React.FC = () => {
 					<form onSubmit={onHandleSubmit} className='space-y-6'>
 						<div>
 							<Input
+								id='name'
+								label='Nome'
+								type='text'
+								{...register('name')}
+								error={errors.name?.message}
+							/>
+						</div>
+						<div>
+							<Input
 								id='email'
 								label='E-mail'
 								type='email'
