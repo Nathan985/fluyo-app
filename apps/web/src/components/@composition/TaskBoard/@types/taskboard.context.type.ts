@@ -1,11 +1,6 @@
 import { ReactNode } from 'react';
 import { BaseItemsType } from './base.component.type';
-import {
-	DragEndEvent,
-	DragOverEvent,
-	DragStartEvent,
-	UniqueIdentifier,
-} from '@dnd-kit/core';
+import { DragEndEvent, DragOverEvent, DragStartEvent } from '@dnd-kit/core';
 
 export type ITaskBoardContextType<T extends BaseItemsType = any> = {
 	getColumnData: (columnId: string) => T[];

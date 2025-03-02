@@ -1,4 +1,3 @@
-import React from 'react';
 import { IHeaderColumnType } from '../@types/column.component.type';
 import { BaseItemsType } from '../@types/base.component.type';
 

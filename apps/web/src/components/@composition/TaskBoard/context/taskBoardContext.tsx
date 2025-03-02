@@ -1,21 +1,10 @@
-import {
-	createContext,
-	useCallback,
-	useContext,
-	useMemo,
-	useState,
-} from 'react';
+import { createContext, useCallback, useMemo, useState } from 'react';
 import {
 	ITaskBoardContextProviderType,
 	ITaskBoardContextType,
 } from '../@types/taskboard.context.type';
 import { BaseItemsType } from '../@types/base.component.type';
-import {
-	DragEndEvent,
-	DragOverEvent,
-	DragStartEvent,
-	UniqueIdentifier,
-} from '@dnd-kit/core';
+import { DragEndEvent, DragOverEvent, DragStartEvent } from '@dnd-kit/core';
 
 export const TaskBoardContext = createContext({} as ITaskBoardContextType);
 
