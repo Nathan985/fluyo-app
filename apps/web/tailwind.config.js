@@ -131,5 +131,6 @@ export default {
 		require("@tailwindcss/forms"),
 		require("tailwind-scrollbar"),
 		require("tailwindcss-animate"),
-	]
+	],
+	darkMode: 'class'
 }

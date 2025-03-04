@@ -41,7 +41,7 @@ type LabelProps = ChildrenProps & LabelHTMLAttributes<HTMLLabelElement>;
 const Label: React.FC<LabelProps> = ({ children, className, ...props }) => {
 	return (
 		<label
-			className={cn('text-foreground text-sm font-medium', className)}
+			className={cn('text-sm font-medium text-gray-300', className)}
 			{...props}
 		>
 			{children}
@@ -81,7 +81,7 @@ const FieldMask = React.forwardRef<ReactInputMask, FieldMaskProps>(
 				/>
 				<div className={cn(errorIcon({ side: classNameSetter }), visibleError)}>
 					<ExclamationCircleIcon
-						className='text-destructive h-5 w-5'
+						className='h-5 w-5 text-destructive'
 						aria-hidden='true'
 					/>
 				</div>
@@ -107,7 +107,7 @@ const Field = React.forwardRef<HTMLInputElement, ComponentProps<'input'>>(
 				/>
 				<div className={cn(errorIcon({ side: classNameSetter }), visibleError)}>
 					<ExclamationCircleIcon
-						className='text-destructive h-5 w-5'
+						className='h-5 w-5 text-destructive'
 						aria-hidden='true'
 					/>
 				</div>
@@ -173,7 +173,7 @@ const AddOn = ({
 			{...props}
 		>
 			{Icon && (
-				<Icon className={cn('fill-muted-foreground h-5 w-5', iconClassName)} />
+				<Icon className={cn('h-5 w-5 fill-muted-foreground', iconClassName)} />
 			)}
 		</div>
 	);
@@ -185,7 +185,7 @@ const Helper: React.FC<ChildrenProps> = ({ children }) => {
 	return (
 		<div
 			className={cn(
-				'text-muted-foreground bottom-[-1.1rem] text-xs font-normal',
+				'bottom-[-1.1rem] text-xs font-normal text-muted-foreground',
 				showError ? 'hidden' : 'absolute'
 			)}
 		>
@@ -209,7 +209,7 @@ const Error = ({ children, show = false }: ErrorProps) => {
 	return (
 		<span
 			className={cn(
-				'text-destructive absolute bottom-[-1.3rem] h-5 text-xs',
+				'absolute bottom-[-1.3rem] h-5 text-xs text-destructive',
 				visibleError
 			)}
 		>
