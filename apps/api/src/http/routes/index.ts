@@ -5,6 +5,7 @@ import { getFacades } from '@/usecases';
 import { getAuthRoutes } from './auth';
 import { auth } from '../middlewares/auth';
 import { getProjectsRoute } from './projects';
+import { getInviteRoute } from './invite';
 
 export function buildRoutes(app: FastifyInstance) {
 	const facadesApplication = getFacades();
@@ -17,5 +18,8 @@ export function buildRoutes(app: FastifyInstance) {
 	);
 	app.register((application) =>
 		getProjectsRoute(application, facadesApplication.project)
+	);
+	app.register((application) =>
+		getInviteRoute(application, facadesApplication.invite)
 	);
 }

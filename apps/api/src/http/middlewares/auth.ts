@@ -16,5 +16,32 @@ export const auth = fastifyPlugin(async (app: FastifyInstance) => {
 				throw new UnauthorizedError('Invalid auth token');
 			}
 		};
+
+		request.getUserMemeberShip = async (slug: string) => {
+			const userId = await request.getCurrentUserId();
+
+			const member = await prisma.projectMember.findFirst({
+				where: {
+					userId,
+					project: {
+						slug,
+					},
+				},
+				include: {
+					project: true,
+				},
+			});
+
+			if (!member) {
+				throw new UnauthorizedError('You are not a member of this team');
+			}
+
+			const { project, ...membership } = member;
+
+			return {
+				project,
+				membership,
+			};
+		};
 	});
 });

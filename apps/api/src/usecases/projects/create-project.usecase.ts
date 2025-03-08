@@ -1,6 +1,7 @@
 import { prisma } from '@/lib/prisma';
 import { IUseCaseBase } from '../@types/usecase-base';
 import { ICreateProjectUsecase } from './@dto';
+import { createSlug } from '@/utils/create-slug';
 
 export class CreateProjectUsecase
 	implements
@@ -14,11 +15,12 @@ export class CreateProjectUsecase
 		const { name, description } = params;
 
 		const currentUserId = await request.getCurrentUserId();
-
+		const slug = createSlug(name);
 		await prisma.project.create({
 			data: {
 				name,
 				description,
+				slug,
 				ownerId: currentUserId,
 				members: {
 					create: {
