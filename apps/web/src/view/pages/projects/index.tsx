@@ -1,13 +1,24 @@
 import React from 'react';
 import { useProjects } from './useProjects';
 import { Table } from 'src/components/Table';
-import { EllipsisHorizontalIcon } from '@heroicons/react/20/solid';
 import { SearchFormProject } from 'src/view/form/projects/SearchFormProject';
 import { Modal } from 'src/components/Modal';
 import { CreateProjectForm } from 'src/view/form/projects/CreateProjectForm';
+import { ContextMenu } from 'src/components/@composition/ContextMenu';
+import InviteProject from './components/InviteProject';
 
 export const ProjectsPage: React.FC = () => {
-	const { projects, onChangeModal, openModal, projectsQuery } = useProjects();
+	const {
+		projects,
+		onChangeModal,
+		openModal,
+		projectsQuery,
+		setSelected,
+		pageActions,
+		modalState,
+		dispatchModal,
+		selected,
+	} = useProjects();
 	console.log(projects);
 	return (
 		<div className='flex h-full w-full flex-col overflow-hidden'>
@@ -15,6 +26,7 @@ export const ProjectsPage: React.FC = () => {
 			<Table
 				rows={projects}
 				isSelectableLines
+				onSelectable={setSelected}
 				columns={[
 					{
 						column: 'name',
@@ -41,12 +53,12 @@ export const ProjectsPage: React.FC = () => {
 					{
 						column: 'uuid',
 						label: 'Ações',
-						render: () => (
-							<EllipsisHorizontalIcon className='h-4 w-4 fill-white' />
-						),
+						items: pageActions.batchActions,
+						sharesColumn: true,
 					},
 				]}
 				isLoading={projectsQuery.isLoading}
+				rightClickContent={<ContextMenu.Content options={pageActions.table} />}
 			/>
 			<Modal
 				onClose={() => onChangeModal(false)}
@@ -54,6 +66,16 @@ export const ProjectsPage: React.FC = () => {
 				position='right'
 			>
 				<CreateProjectForm onChangeModal={onChangeModal} />
+			</Modal>
+			<Modal
+				onClose={() => dispatchModal('INVITE_PROJECT_MODAL', false)}
+				open={modalState['INVITE_PROJECT_MODAL']}
+				position='right'
+				className='modal'
+				classNameHeader='modal-header'
+				containerClassName='modal-container'
+			>
+				<InviteProject project={selected[0]} />
 			</Modal>
 		</div>
 	);

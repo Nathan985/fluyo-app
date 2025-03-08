@@ -18,6 +18,7 @@ export const output = z.array(
 	z.object({
 		uuid: z.string(),
 		name: z.string(),
+		slug: z.string(),
 		description: z.string().optional(),
 		createdAt: z.date(),
 		updatedAt: z.date().optional(),

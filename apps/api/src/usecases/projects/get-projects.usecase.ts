@@ -15,6 +15,7 @@ export class GetProjectsUseCase
 		const response = await prisma.project.findMany({
 			select: {
 				name: true,
+				slug: true,
 				createdAt: true,
 				description: true,
 				updatedAt: true,

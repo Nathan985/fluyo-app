@@ -3,6 +3,7 @@ import { IUserEntity } from './user.entity';
 export type IProjectEntity = {
 	uuid: string;
 	name: string;
+	slug: string;
 	description?: string;
 	ownerId: string;
 	owner: IUserEntity;
