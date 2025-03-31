@@ -9,11 +9,11 @@ const buttonVariants = cva(
 		variants: {
 			variant: {
 				default:
-					'bg-primary text-primary-foreground hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all ease-in-out duration-300',
+					'bg-indigo-900 text-primary-foreground hover:bg-indigo-900/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all ease-in-out duration-300',
 				secondary:
 					'bg-secondary text-secondary-foreground hover:bg-secondary/80',
 				outline:
-					'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
+					'border border-indigo-900 bg-transparent text-white shadow-sm hover:bg-indigo-900/50 ',
 				ghost: 'bg-transparent hover:bg-accent hover:text-accent-foreground',
 				nav: 'bg-nav text-nav-foreground hover:opacity-50 ring-1 ring-nav-foreground',
 				// outline: "ring-1 ring-border hover:bg-accent text-foreground"
@@ -54,7 +54,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 					className,
 				})}
 			>
-				{isLoading && <Spinner className='fill-muted h-6 w-6' />}
+				{isLoading && <Spinner className='h-6 w-6 fill-muted' />}
 				{!isLoading && children}
 			</button>
 		);
