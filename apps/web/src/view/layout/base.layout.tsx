@@ -24,7 +24,6 @@ import {
 } from '@heroicons/react/24/outline';
 import {
 	ChevronDownIcon,
-	MagnifyingGlassIcon,
 } from '@heroicons/react/20/solid';
 import { cn } from 'src/@shared/utils';
 import { Outlet } from 'react-router-dom';
@@ -271,7 +270,7 @@ export const BaseLayout = () => {
 									className='hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10'
 								/>
 
-								{/* Profile dropdown */}
+								{/* @ts-ignore */}
 								<Menu as='div' className='relative'>
 									<MenuButton className='-m-1.5 flex items-center p-1.5'>
 										<span className='sr-only'>Open user menu</span>
