@@ -57,7 +57,7 @@ export const useInviteProject = (params: IInviteProjectParams) => {
 	});
 
 	const onHandleSubmit = handleSubmit(async (data) => {
-		const response = await createInviteMutation.mutateAsync({
+		await createInviteMutation.mutateAsync({
 			email: data.email,
 			role: data.rule.value,
 			slug: project.slug,

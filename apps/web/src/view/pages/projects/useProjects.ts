@@ -6,7 +6,7 @@ import ProjectService from 'src/@shared/services/ProjectService';
 import { IActionParametes } from './actions/@types/project.actions';
 import { useInviteProjectAction, useViewProjectAction } from './actions';
 import { useProjectContext } from 'src/@shared/context/ProjectContext/hooks/useProjectContext';
-import { useNavigate, useNavigation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const useProjects = () => {
 	const [openModal, setOpenModal] = useState<boolean>(false);

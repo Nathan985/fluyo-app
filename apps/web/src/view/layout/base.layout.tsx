@@ -11,13 +11,9 @@ import {
 } from '@headlessui/react';
 import {
 	Bars3Icon,
-	CalendarIcon,
-	ChartPieIcon,
 	Cog6ToothIcon,
-	DocumentDuplicateIcon,
 	FolderIcon,
 	HomeIcon,
-	UsersIcon,
 	ViewColumnsIcon,
 	XMarkIcon,
 } from '@heroicons/react/24/outline';
@@ -25,16 +21,16 @@ import {
 	ChevronDownIcon,
 } from '@heroicons/react/20/solid';
 import { cn } from 'src/@shared/utils';
-import { href, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { useProjectContext } from 'src/@shared/context/ProjectContext/hooks/useProjectContext';
 import { ProjectView } from './components/ProjectView';
 
 
-const teams = [
-	{ id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
-	{ id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
-	{ id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
-];
+// const teams = [
+// 	{ id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
+// 	{ id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
+// 	{ id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
+// ];
 const userNavigation = [
 	{ name: 'Your profile', href: '#' },
 	{ name: 'Sign out', href: '#' },
@@ -284,6 +280,7 @@ export const BaseLayout = () => {
 								/>
 
 								{/* Profile dropdown */}
+								{/* @ts-ignore */}
 								<Menu as='div' className='relative'>
 									<MenuButton className='-m-1.5 flex items-center p-1.5'>
 										<span className='sr-only'>Open user menu</span>

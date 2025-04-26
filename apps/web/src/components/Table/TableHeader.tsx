@@ -30,6 +30,7 @@ const TableHeader = <T extends baseEntity>({
 			as='thead'
 			className={cn('sticky top-[-4px] z-30 h-[3.1rem] bg-accent ring-1 ring-gray-500 backdrop-blur-lg bg-gray-900', className)}
 			axis='x'
+			//@ts-ignore
 			onReorder={(data) => {
 				onReorder?.(data);
 			}}

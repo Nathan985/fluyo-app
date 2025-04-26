@@ -1,7 +1,7 @@
-import React, { ComponentElement, ComponentState, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SplashScreen } from './components/SplashScreen';
 import { Disclosure, DisclosureContent, DisclosureTrigger } from 'src/components/@composition/Disclosure';
-import { Bars2Icon, ChevronDoubleDownIcon, ChevronDoubleUpIcon, ChevronDownIcon, ChevronUpDownIcon, ChevronUpIcon, UserIcon } from '@heroicons/react/24/outline';
+import { Bars2Icon, ChevronDoubleDownIcon, ChevronDoubleUpIcon, ChevronDownIcon, ChevronUpIcon, UserIcon } from '@heroicons/react/24/outline';
 import { Table } from 'src/components/Table';
 import { Badge } from 'src/components/Badge';
 import { cn } from 'src/@shared/utils';

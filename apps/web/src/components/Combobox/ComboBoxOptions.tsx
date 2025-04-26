@@ -85,6 +85,7 @@ export function ComboBoxOptions<T>({
 							}
 							value={item}
 						>
+							{/* @ts-ignore */}
 							{({ selected, active }) => (
 								<>
 									<span
