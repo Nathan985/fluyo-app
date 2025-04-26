@@ -64,7 +64,7 @@ const RContent = React.forwardRef<
 		<ContextMenuPrimitive.Content
 			ref={ref}
 			className={cn(
-				'z-50 min-w-[8rem] overflow-hidden rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+				'z-50 min-w-[8rem] overflow-hidden rounded-md border border-gray-800 bg-gray-900 p-1 text-gray-200 shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
 				className
 			)}
 			{...props}
@@ -82,7 +82,7 @@ const Item = React.forwardRef<
 	<ContextMenuPrimitive.Item
 		ref={ref}
 		className={cn(
-			'group relative flex h-8 min-w-[15rem] cursor-pointer select-none items-center gap-x-3 rounded-[3px] border-b border-border px-3 py-1.5 text-sm leading-none text-foreground outline-none last:border-b-0 data-[disabled]:pointer-events-none data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:opacity-50 lg:py-2 2xl:py-2',
+			'group relative flex h-8 min-w-[15rem] cursor-pointer select-none items-center gap-x-3 rounded-[3px] border-none px-3 py-1.5 text-sm leading-none text-foreground outline-none last:border-b-0 data-[disabled]:pointer-events-none data-[highlighted]:bg-gray-700 data-[highlighted]:text-accent-foreground data-[disabled]:opacity-50 lg:py-2 2xl:py-2',
 			inset && 'pl-8',
 			className
 		)}
@@ -197,20 +197,27 @@ export function Content({ options, className, itemClassName }: ContentProps) {
 	return (
 		<RContent className={cn(className)}>
 			{options.map(
-				(option) =>
+				(option, index) =>
 					(option.shouldRender ?? true) && (
-						<Item
-							role='button'
-							className={cn(itemClassName)}
-							onClick={option.action}
-							key={option.label}
-						>
-							<div className='text-popover-foreground group-data-[highlighted]:text-accent-foreground group-data-[disabled]:opacity-50'>
-								{option.icon}
-							</div>
-
-							{option.label}
-						</Item>
+						<React.Fragment>
+							<Item
+								role='button'
+								className={cn(itemClassName)}
+								onClick={option.action}
+								key={option.label}
+							>
+								<div className='text-gray-200 group-data-[highlighted]:text-gray-200 group-data-[disabled]:opacity-50'>
+									{option.icon}
+								</div>
+								<span className='text-gray-200'>{option.label}</span>
+							</Item>
+							<div
+								className={cn(
+									'w-full border-b border-b-gray-700',
+									index === options.length - 1 && 'hidden'
+								)}
+							/>
+						</React.Fragment>
 					)
 			)}
 		</RContent>

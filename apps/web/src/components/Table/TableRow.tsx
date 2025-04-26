@@ -11,6 +11,7 @@ import {
 	TableRowProps,
 } from './interface/ITableProps';
 import { TableDropdownMenu } from './TableDropdownMenu';
+import TableTriggerActions from 'src/view/pages/projects/components/TableTriggerActions';
 
 const TableRow = <T extends baseEntity>({
 	columns,
@@ -108,8 +109,8 @@ const TableRow = <T extends baseEntity>({
 							}
 						}}
 						className={cn(
-							'h-12 cursor-pointer border-b border-gray-900 bg-gray-800 text-foreground hover:bg-gray-900/70',
-							rowsSelect.includes(index) && 'bg-gray-900/50'
+							'h-12 cursor-pointer border-b border-gray-900 bg-gray-800 text-foreground hover:bg-gray-800/90',
+							rowsSelect.includes(index) && 'bg-gray-800/90'
 						)}
 					>
 						{isSelectableLines && (
@@ -141,22 +142,49 @@ const TableRow = <T extends baseEntity>({
 							</td>
 						)}
 
-						{columns.map(({ column, render, hidden }, columnKey) => {
-							if (hidden) return <></>;
-							return (
-								<td
-									className={cn(
-										'whitespace-nowrap pl-4 pr-3 text-sm *:pointer-events-none sm:pl-6',
-										classNameRow
-									)}
-									key={columnKey}
-								>
-									{render !== undefined
-										? render(row, index)
-										: String(row[column])}
-								</td>
-							);
-						})}
+						{columns.map(
+							(
+								{ column, render, hidden, sharesColumn = false, items = [] },
+								columnKey
+							) => {
+								if (hidden) return <></>;
+								if (sharesColumn) {
+									return (
+										<td
+											className={cn('pl-4 pr-3 text-sm sm:pl-6', classNameRow)}
+											id='table-dropdown-menu-td'
+											key={columnKey}
+										>
+											<TableTriggerActions
+												onOnpenChange={(open) => {
+													const shouldUnselectAll = !rowsSelect.includes(index);
+													if (shouldUnselectAll) {
+														unSelectAll();
+														selectRow(index);
+													}
+
+													onOpenChange(open, row);
+												}}
+												items={items}
+											/>
+										</td>
+									);
+								}
+								return (
+									<td
+										className={cn(
+											'whitespace-nowrap pl-4 pr-3 text-sm text-white border-gray-900 bg-gray-800 hover:bg-gray-800/90 *:pointer-events-none sm:pl-6',
+											classNameRow
+										)}
+										key={columnKey}
+									>
+										{render !== undefined
+											? render(row, index)
+											: String(row[column])}
+									</td>
+								);
+							}
+						)}
 					</tr>
 				))}
 

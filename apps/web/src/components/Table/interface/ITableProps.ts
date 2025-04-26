@@ -1,6 +1,7 @@
-import { IPaginationTable } from './PaginationTable';
 import { UseQueryResult } from '@tanstack/react-query';
 import { ComponentProps, ComponentType, ReactNode } from 'react';
+import { IPaginationTable } from 'src/@shared/interfaces/@shared/PaginationTable';
+import { DropdownItem } from 'src/view/pages/projects/components/TableTriggerActions';
 
 export type baseEntity = object & { uuid?: string };
 
@@ -11,6 +12,8 @@ export type ColumnProps<T extends baseEntity> = {
 	renderHeader?: () => string | ReactNode;
 	shouldRender?: boolean;
 	hidden?: boolean;
+	sharesColumn?: boolean;
+	items?: DropdownItem[];
 };
 
 export interface TableProviderProps<T extends baseEntity> {
@@ -56,6 +59,7 @@ export interface TableDefault<T extends baseEntity>
 	classNameContainer?: string;
 	classNameRow?: string;
 	classNameBody?: string;
+	classNameHeader?: string;
 	onTableRowClick?: (item: T) => void;
 	rightClickContent?: ReactNode;
 	keyExtractor?: (item: T) => string;
@@ -96,6 +100,7 @@ export interface TableHeaderProps<T extends baseEntity> {
 	isSelectableLines?: boolean;
 	actions?: ITableAction<T>[];
 	hideActionButton?: boolean;
+	className?: string;
 	onReorder?: (data: ColumnProps<T>[]) => void;
 	reorderColumns: boolean;
 }

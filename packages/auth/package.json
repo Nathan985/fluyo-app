@@ -1,0 +1,22 @@
+{
+  "name": "@fluyo/auth",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Nathan985",
+  "license": "ISC",
+  "dependencies": {
+    "@casl/ability": "^6.7.3",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@fluyo/prettier-config": "*"
+  },
+  "prettier": "@fluyo/prettier-config"
+}

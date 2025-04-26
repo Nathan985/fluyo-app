@@ -11,7 +11,7 @@ export function EmptyStateRoot({
 	return (
 		<div
 			className={cn(
-				'flex h-full w-full items-center justify-center text-center',
+				'flex h-full w-full items-center justify-center bg-gray-900 text-center',
 				className
 			)}
 		>

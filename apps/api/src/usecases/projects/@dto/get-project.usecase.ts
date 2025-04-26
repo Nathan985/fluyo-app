@@ -3,6 +3,7 @@ export type Input = void;
 export type Output = Array<{
 	uuid: string;
 	name: string;
+	slug: string;
 	description?: string | null;
 	createdAt: Date;
 	updatedAt: Date;

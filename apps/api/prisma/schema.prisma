@@ -19,6 +19,26 @@ model User {
   Account       Account[]
   ProjectMember ProjectMember[]
   Project       Project[]
+  taskIds       String[]        @db.ObjectId
+  Tasks         Task[]          @relation(fields: [taskIds], references: [uuid])
+  Task          Task[]          @relation("RapporteurTasks")
+  Invite        Invite[]
+}
+
+model Invite {
+  uuid      String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String
+  role      Role
+  createdAt DateTime @default(now()) @map("created_at")
+  author    User?    @relation(fields: [authorId], references: [uuid], onDelete: SetNull)
+  authorId  String?  @map("author_id") @db.ObjectId
+
+  project   Project @relation(fields: [projectId], references: [uuid], onDelete: Cascade)
+  projectId String  @map("project_id") @db.ObjectId
+
+  @@unique([email, projectId])
+  @@index([email])
+  @@map("invites")
 }
 
 enum TokenType {
@@ -59,13 +79,28 @@ model Project {
   uuid        String          @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   description String?
+  slug        String          @unique
   ownerId     String          @map("user_id") @db.ObjectId
   owner       User            @relation(fields: [ownerId], references: [uuid], onDelete: Cascade)
   members     ProjectMember[]
   createdAt   DateTime        @default(now()) @map("created_at")
   updatedAt   DateTime        @updatedAt() @map("updated_at")
+  Invite      Invite[]
+  Board       Board[]
 
   @@map("projects")
+}
+
+model Board {
+  uuid      String    @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  projectId String    @db.ObjectId
+  project   Project   @relation(fields: [projectId], references: [uuid], onDelete: Cascade)
+  dateStart DateTime?
+  dateEnd   DateTime?
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  Task      Task[]
 }
 
 model ProjectMember {
@@ -78,4 +113,19 @@ model ProjectMember {
 
   @@unique([projectId, userId])
   @@map("project_members")
+}
+
+model Task {
+  uuid         String   @id @default(auto()) @map("_id") @db.ObjectId
+  title        String
+  description  String
+  status       String
+  rapporteurId String   @db.ObjectId
+  assigneesIds String[] @db.ObjectId
+  assignees    User[]   @relation(fields: [assigneesIds], references: [uuid])
+  rapporteur   User     @relation("RapporteurTasks", fields: [rapporteurId], references: [uuid])
+  boardId      String   @db.ObjectId
+  board        Board    @relation(fields: [boardId], references: [uuid])
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt() @map("updated_at")
 }
