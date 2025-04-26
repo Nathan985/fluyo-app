@@ -5,10 +5,12 @@ import { IProjectEntity } from 'src/@shared/interfaces/entities/project.entity';
 import ProjectService from 'src/@shared/services/ProjectService';
 import { IActionParametes } from './actions/@types/project.actions';
 import { useInviteProjectAction, useViewProjectAction } from './actions';
+import { useProjectContext } from 'src/@shared/context/ProjectContext/hooks/useProjectContext';
 
 export const useProjects = () => {
 	const [openModal, setOpenModal] = useState<boolean>(false);
 	const [selected, setSelected] = useState<Array<IProjectEntity>>([]);
+	const { setProject } = useProjectContext();
 	const [modalState, setModalState] = useState<Record<string, boolean>>({
 		VIEW_PROJECT_MODAL: false,
 	});
@@ -25,6 +27,10 @@ export const useProjects = () => {
 
 	const onChangeModal = (value?: boolean) => {
 		setOpenModal((oldValue) => value ?? !oldValue);
+	};
+
+	const onHandleClickRow = (data: IProjectEntity) => {
+		setProject(data);
 	};
 
 	const dispatchModal = (type: string, value: boolean) => {
@@ -52,5 +58,6 @@ export const useProjects = () => {
 		modalState,
 		dispatchModal,
 		selected,
+		onHandleClickRow,
 	};
 };

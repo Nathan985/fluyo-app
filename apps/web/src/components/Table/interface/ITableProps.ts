@@ -1,6 +1,6 @@
-import { IPaginationTable } from '@shared/interfaces/@shared/PaginationTable';
 import { UseQueryResult } from '@tanstack/react-query';
 import { ComponentProps, ComponentType, ReactNode } from 'react';
+import { IPaginationTable } from 'src/@shared/interfaces/@shared/PaginationTable';
 import { DropdownItem } from 'src/view/pages/projects/components/TableTriggerActions';
 
 export type baseEntity = object & { uuid?: string };

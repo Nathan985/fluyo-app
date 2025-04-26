@@ -19,6 +19,7 @@ export const ProjectsPage: React.FC = () => {
 		modalState,
 		dispatchModal,
 		selected,
+		onHandleClickRow
 	} = useProjects();
 
 	return (
@@ -27,6 +28,7 @@ export const ProjectsPage: React.FC = () => {
 			<Table
 				rows={projects}
 				onSelectable={setSelected}
+				onTableRowClick={onHandleClickRow}
 				columns={[
 					{
 						column: 'name',
