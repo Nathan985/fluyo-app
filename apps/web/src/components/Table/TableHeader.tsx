@@ -9,6 +9,7 @@ import {
 	ITableContext,
 	TableHeaderProps,
 } from './interface/ITableProps';
+import { cn } from 'src/@shared/utils';
 
 const TableHeader = <T extends baseEntity>({
 	rows,
@@ -19,6 +20,7 @@ const TableHeader = <T extends baseEntity>({
 	onReorder,
 	columns,
 	reorderColumns,
+	className
 }: TableHeaderProps<T>) => {
 	const { rowsSelect, selectAll, unSelectAll } =
 		useContext<ITableContext<T>>(TableContext);
@@ -26,7 +28,7 @@ const TableHeader = <T extends baseEntity>({
 	return (
 		<Reorder.Group
 			as='thead'
-			className='sticky top-[-4px] z-30 h-[3.1rem] bg-accent ring-1 ring-border backdrop-blur-lg dark:bg-gray-900'
+			className={cn('sticky top-[-4px] z-30 h-[3.1rem] bg-accent ring-1 ring-gray-500 backdrop-blur-lg bg-gray-900', className)}
 			axis='x'
 			onReorder={(data) => {
 				onReorder?.(data);

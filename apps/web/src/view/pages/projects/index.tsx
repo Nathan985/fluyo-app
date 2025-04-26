@@ -6,6 +6,7 @@ import { Modal } from 'src/components/Modal';
 import { CreateProjectForm } from 'src/view/form/projects/CreateProjectForm';
 import { ContextMenu } from 'src/components/@composition/ContextMenu';
 import InviteProject from './components/InviteProject';
+import { ViewProjectForm } from 'src/view/form/projects/ViewProject';
 
 export const ProjectsPage: React.FC = () => {
 	const {
@@ -19,13 +20,12 @@ export const ProjectsPage: React.FC = () => {
 		dispatchModal,
 		selected,
 	} = useProjects();
-	console.log(projects);
+
 	return (
 		<div className='flex h-full w-full flex-col overflow-hidden'>
 			<SearchFormProject onChangeModal={onChangeModal} />
 			<Table
 				rows={projects}
-				isSelectableLines
 				onSelectable={setSelected}
 				columns={[
 					{
@@ -59,6 +59,12 @@ export const ProjectsPage: React.FC = () => {
 				]}
 				isLoading={projectsQuery.isLoading}
 				rightClickContent={<ContextMenu.Content options={pageActions.table} />}
+			/>
+			<ViewProjectForm 
+				data={selected?.[0]}
+				open={modalState["VIEW_PROJECT_MODAL"]}
+				onClose={() => dispatchModal('VIEW_PROJECT_MODAL', false)}
+				title='Visualizar Projeto'
 			/>
 			<Modal
 				onClose={() => onChangeModal(false)}

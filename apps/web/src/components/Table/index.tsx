@@ -32,6 +32,7 @@ export function Table<T extends baseEntity = any>({
 	customEmptyState: CustomEmptyState = TableEmptyState,
 	onReorder,
 	reorderColumns = false,
+	classNameHeader,
 	...rest
 }: TableProps<T>) {
 	const props = {
@@ -57,7 +58,7 @@ export function Table<T extends baseEntity = any>({
 			<ContextMenu.Root>
 				<div
 					className={cn(
-						'app-scrollbar-nested h-full max-h-full w-full overflow-y-auto rounded-md border border-gray-900 bg-accent shadow-sm',
+						'app-scrollbar-nested h-full max-h-full w-full overflow-y-auto rounded-md border border-gray-900  shadow-sm',
 						classNameContainer
 					)}
 				>
@@ -75,6 +76,7 @@ export function Table<T extends baseEntity = any>({
 								actions={actions}
 								onReorder={onReorder}
 								reorderColumns={reorderColumns}
+								className={classNameHeader}
 							/>
 							<TableRow
 								{...props}

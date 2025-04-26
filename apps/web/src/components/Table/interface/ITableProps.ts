@@ -59,6 +59,7 @@ export interface TableDefault<T extends baseEntity>
 	classNameContainer?: string;
 	classNameRow?: string;
 	classNameBody?: string;
+	classNameHeader?: string;
 	onTableRowClick?: (item: T) => void;
 	rightClickContent?: ReactNode;
 	keyExtractor?: (item: T) => string;
@@ -99,6 +100,7 @@ export interface TableHeaderProps<T extends baseEntity> {
 	isSelectableLines?: boolean;
 	actions?: ITableAction<T>[];
 	hideActionButton?: boolean;
+	className?: string;
 	onReorder?: (data: ColumnProps<T>[]) => void;
 	reorderColumns: boolean;
 }

@@ -173,7 +173,7 @@ const TableRow = <T extends baseEntity>({
 								return (
 									<td
 										className={cn(
-											'whitespace-nowrap pl-4 pr-3 text-sm *:pointer-events-none sm:pl-6',
+											'whitespace-nowrap pl-4 pr-3 text-sm text-white border-gray-900 bg-gray-800 hover:bg-gray-800/90 *:pointer-events-none sm:pl-6',
 											classNameRow
 										)}
 										key={columnKey}

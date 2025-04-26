@@ -12,10 +12,12 @@ export type IProjectEntity = {
 	updatedAt?: Date;
 };
 
+export type IRole = 'ADMIN' | 'MEMBER';
+
 export type IProjectMemberEntity = {
 	uuid: string;
 	projectId: string;
-	role: 'ADMIN' | 'MEMBER';
+	role: IRole;
 	userId: string;
 	project?: IProjectEntity;
 	user?: IUserEntity;
