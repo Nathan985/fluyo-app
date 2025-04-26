@@ -85,10 +85,22 @@ model Project {
   members     ProjectMember[]
   createdAt   DateTime        @default(now()) @map("created_at")
   updatedAt   DateTime        @updatedAt() @map("updated_at")
-  Backlog     Backlog[]
   Invite      Invite[]
+  Board       Board[]
 
   @@map("projects")
+}
+
+model Board {
+  uuid      String    @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  projectId String    @db.ObjectId
+  project   Project   @relation(fields: [projectId], references: [uuid], onDelete: Cascade)
+  dateStart DateTime?
+  dateEnd   DateTime?
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  Task      Task[]
 }
 
 model ProjectMember {
@@ -103,26 +115,17 @@ model ProjectMember {
   @@map("project_members")
 }
 
-model Backlog {
-  uuid      String    @id @default(auto()) @map("_id") @db.ObjectId
-  name      String
-  dateStart DateTime?
-  dateEnd   DateTime?
-  projectId String    @db.ObjectId
-  project   Project   @relation(fields: [projectId], references: [uuid], onDelete: Cascade)
-  createdAt DateTime  @default(now()) @map("created_at")
-  updatedAt DateTime  @updatedAt() @map("updated_at")
-}
-
 model Task {
   uuid         String   @id @default(auto()) @map("_id") @db.ObjectId
   title        String
   description  String
   status       String
   rapporteurId String   @db.ObjectId
-  createdAt    DateTime @default(now()) @map("created_at")
-  updatedAt    DateTime @updatedAt() @map("updated_at")
   assigneesIds String[] @db.ObjectId
   assignees    User[]   @relation(fields: [assigneesIds], references: [uuid])
   rapporteur   User     @relation("RapporteurTasks", fields: [rapporteurId], references: [uuid])
+  boardId      String   @db.ObjectId
+  board        Board    @relation(fields: [boardId], references: [uuid])
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt() @map("updated_at")
 }

@@ -326,7 +326,7 @@ export const BaseLayout = () => {
 					</div>
 
 					<main className='h-full max-h-[calc(100%-64px)] w-full py-10'>
-						<div className='h-full w-full overflow-hidden px-4 sm:px-6 lg:px-8'>
+						<div className='h-full relative w-full overflow-hidden px-4 sm:px-6 lg:px-8'>
 							<Outlet />
 						</div>
 					</main>

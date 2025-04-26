@@ -6,11 +6,13 @@ import ProjectService from 'src/@shared/services/ProjectService';
 import { IActionParametes } from './actions/@types/project.actions';
 import { useInviteProjectAction, useViewProjectAction } from './actions';
 import { useProjectContext } from 'src/@shared/context/ProjectContext/hooks/useProjectContext';
+import { useNavigate, useNavigation } from 'react-router-dom';
 
 export const useProjects = () => {
 	const [openModal, setOpenModal] = useState<boolean>(false);
 	const [selected, setSelected] = useState<Array<IProjectEntity>>([]);
 	const { setProject } = useProjectContext();
+	const navigate = useNavigate();
 	const [modalState, setModalState] = useState<Record<string, boolean>>({
 		VIEW_PROJECT_MODAL: false,
 	});
@@ -31,6 +33,7 @@ export const useProjects = () => {
 
 	const onHandleClickRow = (data: IProjectEntity) => {
 		setProject(data);
+		navigate('/backlog');
 	};
 
 	const dispatchModal = (type: string, value: boolean) => {
