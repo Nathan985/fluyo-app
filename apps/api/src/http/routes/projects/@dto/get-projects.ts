@@ -2,14 +2,14 @@ import { z } from 'zod';
 
 export const input = z.void();
 
-const user = z.object({
+export const user = z.object({
 	name: z.string().nullable().optional(),
 	uuid: z.string(),
 	email: z.string(),
 	avatarUrl: z.string().nullable().optional(),
 });
 
-const members = z.object({
+export const members = z.object({
 	role: z.enum(['ADMIN', 'MEMBER']),
 	user,
 });
