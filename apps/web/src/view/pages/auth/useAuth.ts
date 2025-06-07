@@ -5,6 +5,7 @@ import { useMutation } from '@tanstack/react-query';
 import AuthService from 'src/@shared/services/AuthService';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { useAtuhContext } from 'src/@shared/context/AuthContext/hooks/useAuthContext';
 
 const schema = z.object({
 	email: z.string().min(1, 'Informe o email de login').email('Email invalido'),
@@ -14,6 +15,7 @@ const schema = z.object({
 export type AuthFormData = z.infer<typeof schema>;
 
 export const useAuth = () => {
+	const { handleGetUserAuth } = useAtuhContext();
 	const {
 		handleSubmit,
 		register,
@@ -35,6 +37,7 @@ export const useAuth = () => {
 	const onHandleSubmit = handleSubmit(async (data) => {
 		const response = await authenticate.mutateAsync(data);
 		if (!response.isError) {
+			handleGetUserAuth(data.email);
 			return navigate('/');
 		}
 	});

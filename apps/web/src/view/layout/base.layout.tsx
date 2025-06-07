@@ -24,6 +24,8 @@ import { cn } from 'src/@shared/utils';
 import { Outlet } from 'react-router-dom';
 import { useProjectContext } from 'src/@shared/context/ProjectContext/hooks/useProjectContext';
 import { ProjectView } from './components/ProjectView';
+import { Notifications } from './components/Notifications';
+import { useAtuhContext } from 'src/@shared/context/AuthContext/hooks/useAuthContext';
 
 
 // const teams = [
@@ -39,6 +41,7 @@ const userNavigation = [
 export const BaseLayout = () => {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
 	const { currentProject } = useProjectContext();
+	const { currentUserAuth } = useAtuhContext();
 	
 	const navigation = [
 		{ name: 'Dashboard', href: '/', icon: HomeIcon, current: true },
@@ -281,6 +284,7 @@ export const BaseLayout = () => {
 
 								{/* Profile dropdown */}
 								{/* @ts-ignore */}
+								<Notifications />
 								<Menu as='div' className='relative'>
 									<MenuButton className='-m-1.5 flex items-center p-1.5'>
 										<span className='sr-only'>Open user menu</span>
@@ -294,7 +298,7 @@ export const BaseLayout = () => {
 												aria-hidden='true'
 												className='ml-4 text-sm/6 font-semibold text-gray-400'
 											>
-												Tom Cook
+												{currentUserAuth?.name}
 											</span>
 											<ChevronDownIcon
 												aria-hidden='true'

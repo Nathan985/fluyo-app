@@ -1,3 +1,10 @@
-export function EmptyStateTitle({ text }: { text: string }) {
-	return <h3 className="mt-2 text-sm font-semibold text-foreground">{text}</h3>
+import { cn } from "src/@shared/utils";
+
+export function EmptyStateTitle({ text, className }: { text: string, className?: string }) {
+	return <h3 className={
+		cn(
+			"mt-2 text-sm font-semibold text-foreground",
+			className
+		)
+	}>{text}</h3>
 }
